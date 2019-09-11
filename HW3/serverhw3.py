@@ -296,7 +296,7 @@ class EchoServerProtocol(asyncio.Protocol):
         self.transport.write(m.encode())
 
     game = EscapeRoomGame(output=sendMSG)
-    game.create_game(cheat=("--cheat" in args))
+    game.create_game(cheat=("--cheat" in *args))
     game.start()
     sele.game = game
         
