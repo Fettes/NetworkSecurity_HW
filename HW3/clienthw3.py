@@ -1,4 +1,4 @@
-import socket
+import asyncio
 
 class EchoClientProtocol(asyncio.Protocol):
     def __init__(self,loop):
