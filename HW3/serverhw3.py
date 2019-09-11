@@ -280,8 +280,16 @@ class EchoServerProtocol(asyncio.Protocol):
     def connection_made(self, transport):
         self.transport = transport
     
-    def wait():
+        def wait():
         time.sleep(0.5)
+
+        def sendMSG(m):
+            self.transport.write(m.encode())
+
+        game = EscapeRoomGame(output=sendMSG)
+        game.create_game()
+        game.start()
+        sele.game = game
 
     def data_received(self,data):
         receive = data.decode()
@@ -291,14 +299,6 @@ class EchoServerProtocol(asyncio.Protocol):
         wait()
         for command in commandList:
             self.game.command(commandList)
-
-    def sendMSG(m):
-        self.transport.write(m.encode())
-
-    game = EscapeRoomGame(output=sendMSG)
-    game.create_game()
-    game.start()
-    sele.game = game
         
 loop = asyncio.get_event_loop()
 conn = loop.create_server(EchoServerProtocol,"",3456)
