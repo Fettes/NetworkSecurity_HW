@@ -299,6 +299,7 @@ class EchoServerProtocol(asyncio.Protocol):
 loop = asyncio.get_event_loop()
 conn = loop.create_server(EchoServerProtocol,"",3456)
 server = loop.run_until_complete(conn)
+loop.run_forever()
 server.close()
 loop.run_until_complete(server.wait_closed())
 loop.close()
