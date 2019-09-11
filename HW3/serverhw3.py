@@ -273,7 +273,7 @@ class EscapeRoomGame:
                 self.output("You died. Game over!")
                 self.status = "dead"
             elif self.player.name not in self.room["container"]:
-                self.output("\nVICTORY! You escaped!")
+                self.output("VICTORY! You escaped!")
                 self.status = "escaped"
 
 class EchoServerProtocol(asyncio.Protocol):
@@ -281,6 +281,7 @@ class EchoServerProtocol(asyncio.Protocol):
         self.transport = transport
 
         def sendMSG(m):
+            m = m + "<EOL>\n"
             self.transport.write(m.encode())
 
         game = EscapeRoomGame(output=sendMSG)
