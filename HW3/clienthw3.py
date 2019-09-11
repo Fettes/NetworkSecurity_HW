@@ -10,7 +10,7 @@ class EchoClientProtocol(asyncio.Protocol):
         self.transport= transport
 
     def data_received(self,data):
-        readytosent = {
+        readytosent = [
             "SUBMIT, Zichen Wang, zwang216@jhu.edu, 6, 3456",
             "look<EOL>\n",
             "look mirror<EOL>\n",
@@ -22,7 +22,7 @@ class EchoClientProtocol(asyncio.Protocol):
             "get hammer from chest<EOL>\n",
             "unlock door with hairpin<EOL>\n",
             "open door<EOL>\n"
-        }
+        ]
         if (self.sendindex < 11):
             self.transport.write(readytosent[self.sendindex].encode())
             self.sendindex = self.sendindex + 1
