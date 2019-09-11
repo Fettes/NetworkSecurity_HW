@@ -286,7 +286,7 @@ class EchoServerProtocol(asyncio.Protocol):
         game = EscapeRoomGame(output=sendMSG)
         game.create_game()
         game.start()
-        sele.game = game
+        self.game = game
 
     def data_received(self,data):
         receive = data.decode()
