@@ -10,6 +10,7 @@ class EchoClientProtocol(asyncio.Protocol):
         self.transport= transport
 
     def data_received(self,data):
+        print(data)
         readytosent = [
             "SUBMIT, Zichen Wang, zwang216@jhu.edu, 6, 3456",
             "look<EOL>\n",
