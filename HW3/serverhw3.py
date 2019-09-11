@@ -282,7 +282,7 @@ class EchoServerProtocol(asyncio.protocol):
     def wait():
         time.sleep(0.5)
 
-    def data_received(self,data)
+    def data_received(self,data):
         receive = data.decode()
         print(receive)
         commandList = receive.split("<EOL>\n")
