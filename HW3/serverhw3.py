@@ -249,7 +249,8 @@ class EscapeRoomGame:
         chest.triggers.append(lambda obg, cmd, *args: (cmd == "look") and hammer.__setitem__("visible",True)
         # TODO, the chest needs some triggers. This is for a later exercise
         
-        self.room, self.player = room, player
+        self.room = room
+        self.player = player
         self.command_handler = self.command_handler_class(room, player, self.output)
         self.status = "created"
     
