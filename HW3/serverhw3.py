@@ -294,7 +294,7 @@ class EchoServerProtocol(asyncio.Protocol):
         commandList = receive.split("<EOL>\n")
         commandList = list(filter(None,commandList))
         for command in commandList:
-            self.game.command(commandList)
+            self.game.command(command)
         
 loop = asyncio.get_event_loop()
 conn = loop.create_server(EchoServerProtocol,"",3456)
