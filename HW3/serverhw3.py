@@ -279,9 +279,6 @@ class EscapeRoomGame:
 class EchoServerProtocol(asyncio.Protocol):
     def connection_made(self, transport):
         self.transport = transport
-    
-        def wait():
-        time.sleep(0.5)
 
         def sendMSG(m):
             self.transport.write(m.encode())
@@ -296,7 +293,6 @@ class EchoServerProtocol(asyncio.Protocol):
         print(receive)
         commandList = receive.split("<EOL>\n")
         commandList = list(filter(None,commandList))
-        wait()
         for command in commandList:
             self.game.command(commandList)
         
