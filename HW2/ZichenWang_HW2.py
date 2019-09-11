@@ -285,7 +285,7 @@ def main(args):
     s = socket.socket()
     s.connect(('192.168.200.52',19002))
     recv(s)
-    sendMSG(s,'test')
+    sendMSG(s,'ZichenWang')
     recv(s)
     wait()
     sendMSG(s,'look mirror')
