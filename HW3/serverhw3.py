@@ -275,7 +275,8 @@ class EscapeRoomGame:
             elif self.player.name not in self.room["container"]:
                 self.output("VICTORY! You escaped!")
                 self.status = "escaped"
-class EchoServerProtocol(asyncio.protocol):
+
+class EchoServerProtocol(asyncio.Protocol):
     def connection_made(self, transport):
         self.transport = transport
     
