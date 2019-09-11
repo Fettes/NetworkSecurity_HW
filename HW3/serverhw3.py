@@ -105,7 +105,7 @@ class EscapeRoomCommandHandler:
             return self.output("Open what?")
         object = self.room["container"].get(open_args[-1], None)
         
-        success_result = "You open the {}.".format(object.name)
+        success_result = "You open the {}.\n".format(object.name)
         open_result = (
             ((not object or not object["visible"]) and "You don't see that.") or
             ((object["open"])                      and "It's already open!") or
