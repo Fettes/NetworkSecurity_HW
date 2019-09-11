@@ -246,7 +246,7 @@ class EscapeRoomGame:
         door.triggers.append(lambda obj, cmd, *args: (cmd == "unlock") and door.__setitem__("description", create_door_description(door)))
         door.triggers.append(lambda obj, cmd, *args: (cmd == "open") and room["container"].__delitem__(player.name))
         room.triggers.append(lambda obj, cmd, *args: (cmd == "_post_command_") and advance_time(room, clock))
-        chest.triggers.append(lambda obg, cmd, *args: (cmd == "look") and hammer.__setitem__("visible",True)
+        chest.triggers.append(lambda obg, cmd, *args: (cmd == "look") and hammer.__setitem__("visible",True))
         # TODO, the chest needs some triggers. This is for a later exercise
         
         self.room = room
