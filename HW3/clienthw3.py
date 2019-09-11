@@ -6,6 +6,7 @@ class EchoClientProtocol(asyncio.Protocol):
         self.sendindex = 0
 
     def connection_made(self,transport):
+    
         self.transport(transport)
 
     def data_received(self,data):
