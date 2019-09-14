@@ -333,7 +333,7 @@ class EscapeRoomGame:
     async def flyingkey_agent(self, flyingkey):
         while ((self.status =='playing') and (flyingkey["flying"])):
             self.move_flyingkey(flyingkey)
-            #await asyncio.sleep(5)
+            await asyncio.sleep(5)
 
     def start(self):
         random.seed(0) # this should make everyone's random behave the same.
@@ -371,7 +371,7 @@ def flush_output(*args, **kargs):
     sys.stdout.flush()
        
 async def main():
-    #loop = asyncio.get_event_loop()
+    loop = asyncio.get_event_loop()
     game = EscapeRoomGame()
     game.create_game()
     game.start()
