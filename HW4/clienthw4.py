@@ -26,9 +26,14 @@ class EchoClientProtocol(asyncio.Protocol):
             "unlock door with key<EOL>\n",
             "open door<EOL>\n"
         ]
-        if (self.sendindex < 11):
-            self.transport.write(readytosent[self.sendindex].encode())
-            self.sendindex = self.sendindex + 1
+        if (self.sendindex < 13):
+            if (self.sendindex == 8):
+                if (data == "Key is on the wall"):
+                    self.transport.write(readytosent[self.sendindex].encode())
+                    self.sendindex = self.sendindex + 1
+            else:
+                self.transport.write(readytosent[self.sendindex].encode())
+                self.sendindex = self.sendindex + 1
     
 loop = asyncio.get_event_loop()
 
