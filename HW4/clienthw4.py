@@ -28,7 +28,7 @@ class EchoClientProtocol(asyncio.Protocol):
         ]
         if (self.sendindex < 13):
             if (self.sendindex == 8):
-                if (data == "Key is on the wall"):
+                if ((data == "The flyingkey flies from the floor to the wall<EOL>\n")or(data == "The flyingkey flies from the ceiling to the wall<EOL>\n")):
                     self.transport.write(readytosent[self.sendindex].encode())
                     self.sendindex = self.sendindex + 1
             else:
