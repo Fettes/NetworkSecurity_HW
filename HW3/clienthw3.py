@@ -12,6 +12,7 @@ class EchoClientProtocol(asyncio.Protocol):
     def data_received(self,data):
         print(data)
         readytosent = [
+               # "RESULT,35ae1a780e4b27c66859607d136d99c053745193448399a264927cf5f244e6f8",
             "SUBMIT, Zichen Wang, zwang216@jhu.edu, 6, 3456",
             "look<EOL>\n",
             "look mirror<EOL>\n",
