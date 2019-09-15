@@ -394,7 +394,7 @@ class EchoServerProtocol(asyncio.Protocol):
        
 async def main():
     loop = asyncio.get_event_loop()
-    server = loop.create_server(lambda:EchoServe(),"",3456)
+    server = loop.create_server(lambda:EchoServerProtocol(),"",3456)
     await asyncio.wait([server])
         
 if __name__=="__main__":
