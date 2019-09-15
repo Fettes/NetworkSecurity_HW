@@ -369,15 +369,33 @@ def game_next_input(game):
 def flush_output(*args, **kargs):
     print(*args, **kargs)
     sys.stdout.flush()
+
+class EchoServerProtocol(asyncio.Protocol):
+    def connection_made(self, transport):
+        self.transport = transport
+
+        def sendMSG(m):
+            m = m + "<EOL>\n"
+            self.transport.write(m.encode())
+
+        game = EscapeRoomGame(output=sendMSG)
+        game.create_game()
+        game.start()
+        for command in game.agents:
+            asyncio.ensure_future(command)
+
+    def data_received(self,data):
+        receive = data.decode()
+        print(receive)
+        commandList = receive.split("<EOL>\n")
+        commandList = list(filter(None,commandList))
+        for command in commandList:
+            self.game.command(command)
        
 async def main():
     loop = asyncio.get_event_loop()
-    game = EscapeRoomGame()
-    game.create_game()
-    game.start()
-    flush_output(">> ", end='')
-    loop.add_reader(sys.stdin, game_next_input, game)
-    await asyncio.wait([asyncio.ensure_future(a) for a in game.agents])
+    server = loop.create_server(lambda:EchoServe(),"",3456)
+    await asyncio.wait([server])
         
 if __name__=="__main__":
     asyncio.ensure_future(main())
