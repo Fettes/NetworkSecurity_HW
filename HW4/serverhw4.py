@@ -379,6 +379,7 @@ class EchoServerProtocol(asyncio.Protocol):
             self.transport.write(m.encode())
 
         game = EscapeRoomGame(output=sendMSG)
+        self.game = game
         game.create_game()
         game.start()
         for command in game.agents:
