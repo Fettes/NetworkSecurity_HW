@@ -1,7 +1,7 @@
 """
 Escape Room Core
 """
-import random, sys, asyncio，playground
+import random, sys, asyncio,playground
 
 def create_container_contents(*escape_room_objects):
     return {obj.name: obj for obj in escape_room_objects}
