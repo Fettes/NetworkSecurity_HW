@@ -372,6 +372,7 @@ def flush_output(*args, **kargs):
 
 class EchoServerProtocol(asyncio.Protocol):
     def connection_made(self, transport):
+        print("#")
         self.transport = transport
         self.transport.write(("<EOL>\n").encode())
 
